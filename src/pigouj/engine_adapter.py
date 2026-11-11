@@ -25,6 +25,9 @@ MODEL_HASH = content_hash("synthetic-model-no-weights")
 
 
 class EngineAdapter(Protocol):
+    @property
+    def worker_id(self) -> str: ...
+
     def observe_state(self, now_ns: int) -> EngineStateSnapshot: ...
 
     def can_attempt_admission(self, request: RequestRecord) -> bool | None:
@@ -93,6 +96,8 @@ class MockEngineAdapter:
         self.epoch += 1
 
     def attempt_admission(self, request: RequestRecord, expected_epoch: int) -> AdmissionResult:
+        if request.arrival_ns > self.now_ns:
+            raise ValueError("request arrival is after the mock engine clock")
         self._operations += 1
         before = self.epoch
         reason: str

@@ -1,0 +1,46 @@
+{
+  "schema_version": "pigouj.v7.cpu-contracts.1",
+  "run_id": "demo-accepted-7-17-1-intervention",
+  "pair_id": "demo-accepted-7-17-1",
+  "repeat_id": 1,
+  "arm": "intervention",
+  "arm_order": [
+    "baseline",
+    "intervention"
+  ],
+  "execution_index": 1,
+  "workload_seed": 7,
+  "order_seed": 17,
+  "offered_prefix_hash": "3862f5cdf0e0a4b2537a039fce306b1b524c8741e26ddc3115fe4293d21bde76",
+  "candidate_hash": "aaae7c03748a27586ef0c19d8974f9f89faf2400c65893b43a084c5b6fd01473",
+  "initial_fingerprint": "ca7727e369bff2b54fe6b200860a9964ede708fa1650096e6d87889426c48052",
+  "action": {
+    "kind": "admit",
+    "candidate_request_id": "candidate",
+    "worker_id": "mock-worker-0"
+  },
+  "intervention_at_ns": 5,
+  "horizon_ns": 100,
+  "cache_policy": "warm_prefix_replay",
+  "estimand": "isolated_busy_period_no_future_arrivals",
+  "engine_version": "deterministic-test-double/1",
+  "engine_commit": "f9f369ea2d63500e229d139b365e2258a85964b279408873969950d201556786",
+  "model_hash": "a4c8154b68c65751c8d2de28be0c35eca8b628ea36a81edcb68962de82da594f",
+  "runtime_config_hash": "914e461f964323c882fb271b6080d099283fe5e522a86e5143a236519bfdc02e",
+  "implementation_hash": "935f31042af867009713cd46a8e3e3e4e7e458bbc39cf94201dee2e50168aec2",
+  "boundary": {
+    "boundary_id": "synthetic-demo-boundary",
+    "kind": "SYNTHETIC_CPU_DEMO",
+    "device_ids": [
+      "virtual-worker",
+      "virtual-gateway",
+      "virtual-audit"
+    ],
+    "includes_gateway": true,
+    "includes_audit": true,
+    "nonoverlap_verified": false,
+    "scope_note": "Arbitrary simulated counters only; no hardware energy measured"
+  },
+  "meter_id": "synthetic-counter-no-hardware",
+  "evidence": "synthetic_demonstration"
+}

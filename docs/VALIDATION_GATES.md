@@ -44,3 +44,13 @@ Do not inherit an arbitrary 2% meter error, 4% energy saving or 0.05ms router la
 - Lack of engine-native admission checks.
 - Held/rejected requests removed from denominator/reporting.
 - Test cases assert only `score>0` where physical state correctness is the claim.
+
+## Final CPU re-audit — 2026-11-11
+
+Gate A was re-audited from `e7b362c` and strengthened after 15 newly exposed
+negative cases. The final suite has **106 implementation tests**, 8 separate
+reference math checks, Ruff lint/format, strict mypy and dependency checks all
+passing. All 8 original committed pair verdicts are unchanged. See
+`GATE_A_FINAL_AUDIT.md` and `artifacts/validation/gate-a-final/final/`.
+The original Phase 0/1 evidence above remains preserved. Gate B remains unchecked
+and blocked on university hardware/native event/meter integration.

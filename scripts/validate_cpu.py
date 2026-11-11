@@ -72,6 +72,7 @@ def main() -> None:
     paths = [Path("pyproject.toml"), Path("requirements-dev.lock")]
     for directory in ("src", "tests", "scripts"):
         paths.extend(sorted(Path(directory).rglob("*.py")))
+    paths.extend(sorted(path for path in Path("configs").rglob("*") if path.is_file()))
     source_hashes = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
     (destination / "validated_source_hashes.json").write_text(
         json.dumps(source_hashes, indent=2) + "\n"

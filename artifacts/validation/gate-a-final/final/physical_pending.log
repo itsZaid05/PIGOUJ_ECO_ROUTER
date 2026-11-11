@@ -1,0 +1,21 @@
+{
+  "physical_gate": "PENDING",
+  "eligible_for_physical_training": false,
+  "requested_samples": 3,
+  "requested_interval_seconds": 0.05,
+  "clock_note": "same-process call brackets, not calibrated cross-device clock alignment",
+  "energy_unit_conversion": "1 millijoule = 0.001 joule; raw values retained",
+  "boundary": "GPU board diagnostic only; not AC/whole-node energy",
+  "requested_device_uuids": [],
+  "status": "unavailable",
+  "error": "no NVML library exposed",
+  "evidence": "no_readings",
+  "platform": "Linux",
+  "vllm_version": null,
+  "pending": [
+    "native allocator/scheduler events and frontend rejection semantics",
+    "engine-consistent freshness; no epoch RPC assumed",
+    "declared meter boundary, calibration, aligned clocks and raw event capture",
+    "idle/loaded/A-A controls, reproducible replay and instrumentation overhead"
+  ]
+}

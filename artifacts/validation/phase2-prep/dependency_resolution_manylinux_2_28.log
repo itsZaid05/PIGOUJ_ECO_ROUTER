@@ -1,0 +1,8 @@
+error: No solution found when resolving dependencies
+  cause: Because llguidance{platform_machine == 'aarch64' or platform_machine == 'arm64' or platform_machine == 'ppc64le' or platform_machine == 's390x' or platform_machine == 'x86_64'}>=1.7.0,<=1.7.6 has no usable wheels and only the following versions of llguidance{platform_machine == 'aarch64' or platform_machine == 'arm64' or platform_machine == 'ppc64le' or platform_machine == 's390x' or platform_machine == 'x86_64'} are available:
+             llguidance{platform_machine == 'aarch64' or platform_machine == 'arm64' or platform_machine == 'ppc64le' or platform_machine == 's390x' or platform_machine == 'x86_64'}<=1.7.6
+             llguidance{platform_machine == 'aarch64' or platform_machine == 'arm64' or platform_machine == 'ppc64le' or platform_machine == 's390x' or platform_machine == 'x86_64'}>=1.8.0
+         we can conclude that llguidance{platform_machine == 'aarch64' or platform_machine == 'arm64' or platform_machine == 'ppc64le' or platform_machine == 's390x' or platform_machine == 'x86_64'}>=1.7.0,<1.8.0 cannot be used.
+         And because vllm>=0.33.0 depends on llguidance{platform_machine == 'aarch64' or platform_machine == 'arm64' or platform_machine == 'ppc64le' or platform_machine == 's390x' or platform_machine == 'x86_64'}>=1.7.0,<1.8.0 and you require vllm==0.33.0, we can conclude that your requirements are unsatisfiable.
+
+hint: Wheels are required for `llguidance` because building from source is disabled for all packages (i.e., with `--no-build`)

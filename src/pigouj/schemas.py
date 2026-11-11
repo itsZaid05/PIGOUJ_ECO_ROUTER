@@ -132,6 +132,18 @@ class EngineStateSnapshot(Frozen):
             value = getattr(self, name)
             if isinstance(value, Observation):
                 value.age_ns(self.captured_at_ns)
+        active_ids = tuple(p.request_id for p in self.active.value or ())
+        waiting_ids = self.waiting.value or ()
+        cache_hashes = self.cache_prefix_hashes.value or ()
+        for name, values in (
+            ("active", active_ids),
+            ("waiting", waiting_ids),
+            ("cache_prefix_hashes", cache_hashes),
+        ):
+            if len(values) != len(set(values)):
+                raise ValueError(f"duplicate {name} membership")
+        if set(active_ids) & set(waiting_ids):
+            raise ValueError("active and waiting request IDs overlap")
         return self
 
 

@@ -66,3 +66,19 @@ An output directory must not already exist. Every JSONL record/manifest has an e
 Modules are `schemas`, `engine_adapter`, `replay`, `energy`, `routing`, `validation`, and the CLI `harness`. `routing.attempt_once` delegates a single attempt; it is not an online routing policy. JSONL plus exclusive file creation and committed content hashes serve the small immutable CPU evidence set; physical Parquet ingestion is deferred to the physical replay phase.
 
 See `docs/ENVIRONMENT_AUDIT.md`, `docs/CPU_FOUNDATION_REPORT.md` and `docs/PENDING_TESTS.md`. **CPU Gate A can pass while physical Gate B remains blocked.**
+
+## Final Gate A audit and university GPU preparation
+
+The follow-up audit from `e7b362c` passes **106 implementation tests** and the
+8 separate reference checks, with all original pair verdicts preserved. See
+`docs/GATE_A_FINAL_AUDIT.md`, `docs/GPU_ACCESS_REQUIREMENTS.md`, and
+`docs/PHASE2_EXECUTION_PLAN.md`. The optional read-only NVML capability probe
+requires allocation UUIDs and never enables physical pair labels.
+
+A separate, hash-locked GPU environment candidate is prepared under `configs/`
+for Linux x86_64 / Python 3.12 / Ubuntu 24.04 (glibc 2.39). Only dependency
+metadata was resolved; GPU installation and execution are untested. Do not mix
+this candidate with the CPU `.venv`. Stage 0 can be run without an install via
+`PYTHONPATH=src python3 scripts/phase2_stage0.py --output work/stage0-new`; without
+an allocation UUID this performs inventory and skips device sampling. Exit 2
+always means the physical gate is pending.

@@ -38,3 +38,30 @@ source/config/test files. Exact commands, raw outputs, exits, JUnit and validate
 source hashes are retained. No physical energy gain, learned model, native
 scheduler patch, paid job or UI was produced. Historical research sources and
 reference test code remain unchanged.
+
+## Final Gate A re-audit / Phase 2 preparation — 2026-11-11
+
+Base: `e7b362c0da44c1b3867f8e46f021994704552e13` / `phase0-1-cpu`.
+Follow-up commit is identified by local tag `gate-a-final-cpu`. The user supplied
+`https://github.com/itsZaid05/PIGOUJ_ECO_ROUTER` after authorizing a new repo/push;
+it was empty, public and writable when inspected. Publication is within that
+explicit request; this is not physical-experiment authorization.
+
+| Decision | Evidence | Status / limits |
+|---|---|---|
+| Independently rerun the unchanged baseline before edits | `artifacts/validation/gate-a-final/baseline/`: 66 implementation tests, 8 reference checks and existing checks pass | Original evidence preserved |
+| Add negative assertions rather than rely on the prior checklist | `pre_fix_regressions.log`: 15 failures / 10 passes in newly added cases before fixes | Reproduced wrong-worker/future-arrival, duplicate/unknown/missing/stale state and impossible output timing gaps |
+| Reject wrong-worker attempts before side effects; require consistent current mock state and completed-output window | `engine_adapter.py`, `routing.py`, `schemas.py`, `validation.py`; new audit regressions | Mock-only guarantees; no native reservation invented |
+| Preserve original fixture verdicts and canonical negative/zero/positive labels | `test_committed_baseline_pair_verdicts_remain_unchanged` and signed/censored/missing-energy pair tests | All 8 original pair verdicts match; physical labels stay blocked |
+| Add read-only telemetry with explicit C ABI and UUID selection | `telemetry.py`, `probe_physical_capabilities.py`, `test_telemetry.py` | CPU stubs tagged test_fixture; actual NVML ABI/sensor branches still unverified on hardware |
+| Prepare exclusive-output Stage 0 capture without model/CUDA execution | `phase2_stage0.py`, `test_stage0.py`, `phase2-prep/cpu-stage0/stage0.json` | CPU negative path exit 2; no UUID means no device sampling |
+| Refine native mapping to include real frontend queue admission | Exact source review: AsyncLLM.check_admission vs scheduler allocate_slots/None, queue/preemption/prefix events; `native_source_map.json` | Frontend HTTP 503 is distinct from KV deferral; no expected_epoch RPC established |
+| Resolve a separate hashed GPU environment candidate | 200-package Python 3.12/manylinux_2_39 lock; 2.28 attempt failed for llguidance wheel compatibility | Metadata only; no GPU stack installed, no driver/model fit claim |
+| Accept CPU Gate A, retain physical Gate B stop | `gate-a-final/final/commands.json`: 106 tests, 8 reference checks, lint/format/types/dependency checks pass | University allocation, installed build/native adapter, approved model and calibrated meters still missing |
+
+The native patch, native integration suite, physical meter calibration, replay
+matching tolerance and substantial hardware workloads remain future work. No
+physical energy readings, training labels, trained model or savings were
+produced. Canonical/historical research sources and reference math code remain
+unchanged. Detailed remaining dependencies and the first GPU command are in
+`GPU_ACCESS_REQUIREMENTS.md` and `PHASE2_EXECUTION_PLAN.md`.

@@ -1,0 +1,76 @@
+{
+  "commit": "4ba787ec9959e566d3b587a796dff07673324da5",
+  "execution_verified": false,
+  "files": [
+    {
+      "path": "pyproject.toml",
+      "git_blob_sha": "46c836043ca248fc5b50cb5f7ea1b3392219bf7a",
+      "url": "https://github.com/vllm-project/vllm/blob/4ba787ec9959e566d3b587a796dff07673324da5/pyproject.toml",
+      "local": "artifacts/validation/phase2-prep/vllm_source/pyproject.toml",
+      "sha256": "7472ebabeb4b8d248c3afd1202808a84573ab7795bb8a1b7ae63e378d3c40df9"
+    },
+    {
+      "path": "requirements/cuda.txt",
+      "git_blob_sha": "c181681dd91a7b99aa09f60f82cabc05b2c9e89f",
+      "url": "https://github.com/vllm-project/vllm/blob/4ba787ec9959e566d3b587a796dff07673324da5/requirements/cuda.txt",
+      "local": "artifacts/validation/phase2-prep/vllm_source/requirements__cuda.txt",
+      "sha256": "0727a2423fa83bfbda3241f0fba6e847bdc056a2f27cdb2b2f00a56d5037fd6d"
+    },
+    {
+      "path": "requirements/common.txt",
+      "git_blob_sha": "d235d9e8bd818f5851eceb1a586911d8053cc90e",
+      "url": "https://github.com/vllm-project/vllm/blob/4ba787ec9959e566d3b587a796dff07673324da5/requirements/common.txt",
+      "local": "artifacts/validation/phase2-prep/vllm_source/requirements__common.txt",
+      "sha256": "0e7e3a4ca04f0eff75cb65123ae66223e4374aaaa6da0d42ca1a5c9ea0f2b0c8"
+    },
+    {
+      "path": "requirements/build/cuda.txt",
+      "git_blob_sha": "6e6fa61892f8fab3439580c015f390b919970b6a",
+      "url": "https://github.com/vllm-project/vllm/blob/4ba787ec9959e566d3b587a796dff07673324da5/requirements/build/cuda.txt",
+      "local": "artifacts/validation/phase2-prep/vllm_source/requirements__build__cuda.txt",
+      "sha256": "2b2d207d44b03d409a6c09eee0df5bc01782d93ccf1f48deb9af361cef6d9aa1"
+    },
+    {
+      "path": "vllm/config/scheduler.py",
+      "git_blob_sha": "5ad38c0a46f0446c9f4b43a7452eaa64483a33da",
+      "url": "https://github.com/vllm-project/vllm/blob/4ba787ec9959e566d3b587a796dff07673324da5/vllm/config/scheduler.py",
+      "local": "artifacts/validation/phase2-prep/vllm_source/vllm__config__scheduler.py",
+      "sha256": "61485c7a1ef1c7c65339767f4b223f55de76d2ca152eb19df915c88f526be9de"
+    },
+    {
+      "path": "vllm/v1/request.py",
+      "git_blob_sha": "4b1b9ecc2eede6347d839ef52683f3d40a306af5",
+      "url": "https://github.com/vllm-project/vllm/blob/4ba787ec9959e566d3b587a796dff07673324da5/vllm/v1/request.py",
+      "local": "artifacts/validation/phase2-prep/vllm_source/vllm__v1__request.py",
+      "sha256": "dd7c30bf8b0894dc123a739c299c0133566f8cc075b081e45905f1c29506e69d"
+    },
+    {
+      "path": "vllm/v1/engine/admission_control.py",
+      "git_blob_sha": "b72d50f3465dd196245307a3a620e7b8f1aee7e7",
+      "url": "https://github.com/vllm-project/vllm/blob/4ba787ec9959e566d3b587a796dff07673324da5/vllm/v1/engine/admission_control.py",
+      "local": "artifacts/validation/phase2-prep/vllm_source/vllm__v1__engine__admission_control.py",
+      "sha256": "f9276089790256180b48745e8f5244f4f6ffbcb1c74561ce24ed6ece0d0360a4"
+    },
+    {
+      "path": "vllm/v1/engine/exceptions.py",
+      "git_blob_sha": "e1d8e5f20b10ea882017644e01b65d4c532b5783",
+      "url": "https://github.com/vllm-project/vllm/blob/4ba787ec9959e566d3b587a796dff07673324da5/vllm/v1/engine/exceptions.py",
+      "local": "artifacts/validation/phase2-prep/vllm_source/vllm__v1__engine__exceptions.py",
+      "sha256": "224e3a105def180e437c7c40bbc5c1b95de8f1cc597c2fa6364a3d8021864532"
+    },
+    {
+      "path": "docker/Dockerfile",
+      "git_blob_sha": "f3cac42652e9a46ec2f59e31ee61648d1d48cd07",
+      "url": "https://github.com/vllm-project/vllm/blob/4ba787ec9959e566d3b587a796dff07673324da5/docker/Dockerfile",
+      "local": "artifacts/validation/phase2-prep/vllm_source/docker__Dockerfile",
+      "sha256": "c5a9c1ed6dad87c8c18abe476172f5767e7c7e397db14c8d5b3821684c27c163"
+    },
+    {
+      "path": "vllm/exceptions.py",
+      "git_blob_sha": "85863c2fbf1db06e3d3c3119ac0f2ad7526faf15",
+      "local": "artifacts/validation/phase2-prep/vllm_source/vllm__exceptions.py",
+      "url": "https://github.com/vllm-project/vllm/blob/4ba787ec9959e566d3b587a796dff07673324da5/vllm/exceptions.py",
+      "sha256": "b7289dc5d796a40f7a40cd74060035475b54c8e65b57c467d644509b50689c71"
+    }
+  ]
+}

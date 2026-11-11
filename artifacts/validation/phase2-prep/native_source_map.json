@@ -1,0 +1,264 @@
+{
+  "source_commit": "4ba787ec9959e566d3b587a796dff07673324da5",
+  "review_kind": "static_source_only",
+  "native_execution_verified": false,
+  "files": [
+    {
+      "path": "vllm/v1/core/kv_cache_manager.py",
+      "local": "artifacts/validation/vllm_source/vllm__v1__core__kv_cache_manager.py",
+      "sha256": "39ae1c1564a034fd59736a92d962bfab5a0af03529e01349b765422dbd5a355d",
+      "methods": [
+        {
+          "name": "get_block_ids",
+          "line": 66,
+          "end_line": 71,
+          "signature": "self, allow_none: Literal[False]=False, *, group_ids: Sequence[int] | None=None"
+        },
+        {
+          "name": "get_block_ids",
+          "line": 74,
+          "end_line": 79,
+          "signature": "self, allow_none: Literal[True]=True, *, group_ids: Sequence[int] | None=None"
+        },
+        {
+          "name": "get_block_ids",
+          "line": 81,
+          "end_line": 107,
+          "signature": "self, allow_none: bool=False, *, group_ids: Sequence[int] | None=None"
+        },
+        {
+          "name": "make_prefix_cache_stats",
+          "line": 238,
+          "end_line": 249,
+          "signature": "self"
+        },
+        {
+          "name": "get_computed_blocks",
+          "line": 266,
+          "end_line": 328,
+          "signature": "self, request: Request, max_cache_hit_length: int | None=None"
+        },
+        {
+          "name": "allocate_slots",
+          "line": 380,
+          "end_line": 627,
+          "signature": "self, request: Request, num_new_tokens: int, num_new_computed_tokens: int=0, new_computed_blocks: KVCacheBlocks | None=None, num_lookahead_tokens: int=0, num_external_computed_tokens: int=0, delay_cache_blocks: bool=False, num_encoder_tokens: int=0, full_sequence_must_fit: bool=False, reserved_blocks: int=0, has_scheduled_reqs: bool=True, skip_zeroing_group_ids: tuple[int, ...]=()"
+        },
+        {
+          "name": "free",
+          "line": 629,
+          "end_line": 638,
+          "signature": "self, request: Request"
+        },
+        {
+          "name": "evict_blocks",
+          "line": 674,
+          "end_line": 681,
+          "signature": "self, block_ids: set[int]"
+        },
+        {
+          "name": "reset_prefix_cache",
+          "line": 683,
+          "end_line": 698,
+          "signature": "self"
+        },
+        {
+          "name": "get_num_common_prefix_blocks",
+          "line": 700,
+          "end_line": 703,
+          "signature": "self, running_request_id: str"
+        },
+        {
+          "name": "take_events",
+          "line": 705,
+          "end_line": 730,
+          "signature": "self"
+        },
+        {
+          "name": "get_blocks",
+          "line": 732,
+          "end_line": 734,
+          "signature": "self, request_id: str"
+        },
+        {
+          "name": "get_block_ids",
+          "line": 736,
+          "end_line": 738,
+          "signature": "self, request_id: str"
+        }
+      ]
+    },
+    {
+      "path": "vllm/v1/core/sched/scheduler.py",
+      "local": "artifacts/validation/vllm_source/vllm__v1__core__sched__scheduler.py",
+      "sha256": "d76cc22257550972137df9c893505d0bd0f5d482374691e6eca4372772de501a",
+      "methods": [
+        {
+          "name": "schedule",
+          "line": 699,
+          "end_line": 1784,
+          "signature": "self, throttle_prefills: bool=False"
+        },
+        {
+          "name": "_preempt_request",
+          "line": 1799,
+          "end_line": 1843,
+          "signature": "self, request: Request, timestamp: float, drop_stale_output: bool=False"
+        },
+        {
+          "name": "update_from_output",
+          "line": 2259,
+          "end_line": 2676,
+          "signature": "self, scheduler_output: SchedulerOutput, model_runner_output: ModelRunnerOutput"
+        },
+        {
+          "name": "get_request_counts",
+          "line": 2920,
+          "end_line": 2922,
+          "signature": "self"
+        },
+        {
+          "name": "add_request",
+          "line": 2931,
+          "end_line": 2962,
+          "signature": "self, request: Request"
+        },
+        {
+          "name": "finish_requests",
+          "line": 2964,
+          "end_line": 3029,
+          "signature": "self, request_ids: str | Iterable[str] | None, finished_status: RequestStatus"
+        },
+        {
+          "name": "reset_prefix_cache",
+          "line": 3184,
+          "end_line": 3227,
+          "signature": "self, reset_running_requests: bool=False, reset_connector: bool=False"
+        }
+      ]
+    },
+    {
+      "path": "vllm/v1/engine/core.py",
+      "local": "artifacts/validation/vllm_source/vllm__v1__engine__core.py",
+      "sha256": "d02d32df5d15f0a8b8ffc731ed4bc6f7fcb68b8a9273ec5e4c5d1ab4bd7d7e01",
+      "methods": [
+        {
+          "name": "add_request",
+          "line": 518,
+          "end_line": 562,
+          "signature": "self, request: Request, request_wave: int=0"
+        },
+        {
+          "name": "reset_prefix_cache",
+          "line": 883,
+          "end_line": 888,
+          "signature": "self, reset_running_requests: bool=False, reset_connector: bool=False"
+        },
+        {
+          "name": "add_request",
+          "line": 2372,
+          "end_line": 2385,
+          "signature": "self, request: Request, request_wave: int=0"
+        }
+      ]
+    },
+    {
+      "path": "vllm/v1/engine/async_llm.py",
+      "local": "artifacts/validation/vllm_source/vllm__v1__engine__async_llm.py",
+      "sha256": "73ef3bfe5352efa4104fd36a6053e5044f5347b36b197a745361dfe195d5800e",
+      "methods": [
+        {
+          "name": "check_admission",
+          "line": 325,
+          "end_line": 383,
+          "signature": "self, n: int=1, request_id: str | None=None"
+        },
+        {
+          "name": "add_request",
+          "line": 397,
+          "end_line": 565,
+          "signature": "self, request_id: str, prompt: EngineCoreRequest | PromptType | EngineInput | AsyncGenerator[StreamingInput, None], params: SamplingParams | PoolingParams, arrival_time: float | None=None, lora_request: LoRARequest | None=None, tokenization_kwargs: dict[str, Any] | None=None, trace_headers: Mapping[str, str] | None=None, priority: int=0, data_parallel_rank: int | None=None, session_id: str | None=None, prompt_text: str | None=None, reasoning_ended: bool | None=None, reasoning_parser_kwargs: dict[str, Any] | None=None, kv_hints: KvHintsEnvelope | None=None"
+        },
+        {
+          "name": "reset_prefix_cache",
+          "line": 1188,
+          "end_line": 1193,
+          "signature": "self, reset_running_requests: bool=False, reset_connector: bool=False"
+        }
+      ]
+    },
+    {
+      "path": "vllm/entrypoints/openai/api_server.py",
+      "local": "artifacts/validation/vllm_source/vllm__entrypoints__openai__api_server.py",
+      "sha256": "470ff555bdc19f8e17edf4ee7b6ec3f49ff5af0f773e2a7f91bab536e2239109",
+      "methods": []
+    },
+    {
+      "path": "pyproject.toml",
+      "local": "artifacts/validation/phase2-prep/vllm_source/pyproject.toml",
+      "sha256": "7472ebabeb4b8d248c3afd1202808a84573ab7795bb8a1b7ae63e378d3c40df9",
+      "methods": []
+    },
+    {
+      "path": "requirements/cuda.txt",
+      "local": "artifacts/validation/phase2-prep/vllm_source/requirements__cuda.txt",
+      "sha256": "0727a2423fa83bfbda3241f0fba6e847bdc056a2f27cdb2b2f00a56d5037fd6d",
+      "methods": []
+    },
+    {
+      "path": "requirements/common.txt",
+      "local": "artifacts/validation/phase2-prep/vllm_source/requirements__common.txt",
+      "sha256": "0e7e3a4ca04f0eff75cb65123ae66223e4374aaaa6da0d42ca1a5c9ea0f2b0c8",
+      "methods": []
+    },
+    {
+      "path": "requirements/build/cuda.txt",
+      "local": "artifacts/validation/phase2-prep/vllm_source/requirements__build__cuda.txt",
+      "sha256": "2b2d207d44b03d409a6c09eee0df5bc01782d93ccf1f48deb9af361cef6d9aa1",
+      "methods": []
+    },
+    {
+      "path": "vllm/config/scheduler.py",
+      "local": "artifacts/validation/phase2-prep/vllm_source/vllm__config__scheduler.py",
+      "sha256": "61485c7a1ef1c7c65339767f4b223f55de76d2ca152eb19df915c88f526be9de",
+      "methods": []
+    },
+    {
+      "path": "vllm/v1/request.py",
+      "local": "artifacts/validation/phase2-prep/vllm_source/vllm__v1__request.py",
+      "sha256": "dd7c30bf8b0894dc123a739c299c0133566f8cc075b081e45905f1c29506e69d",
+      "methods": [
+        {
+          "name": "take_events",
+          "line": 344,
+          "end_line": 348,
+          "signature": "self"
+        }
+      ]
+    },
+    {
+      "path": "vllm/v1/engine/admission_control.py",
+      "local": "artifacts/validation/phase2-prep/vllm_source/vllm__v1__engine__admission_control.py",
+      "sha256": "f9276089790256180b48745e8f5244f4f6ffbcb1c74561ce24ed6ece0d0360a4",
+      "methods": []
+    },
+    {
+      "path": "vllm/v1/engine/exceptions.py",
+      "local": "artifacts/validation/phase2-prep/vllm_source/vllm__v1__engine__exceptions.py",
+      "sha256": "224e3a105def180e437c7c40bbc5c1b95de8f1cc597c2fa6364a3d8021864532",
+      "methods": []
+    },
+    {
+      "path": "docker/Dockerfile",
+      "local": "artifacts/validation/phase2-prep/vllm_source/docker__Dockerfile",
+      "sha256": "c5a9c1ed6dad87c8c18abe476172f5767e7c7e397db14c8d5b3821684c27c163",
+      "methods": []
+    },
+    {
+      "path": "vllm/exceptions.py",
+      "local": "artifacts/validation/phase2-prep/vllm_source/vllm__exceptions.py",
+      "sha256": "b7289dc5d796a40f7a40cd74060035475b54c8e65b57c467d644509b50689c71",
+      "methods": []
+    }
+  ]
+}

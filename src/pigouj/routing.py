@@ -10,4 +10,6 @@ def attempt_once(
     snapshot: EngineStateSnapshot,
 ) -> AdmissionResult:
     """Only the adapter can accept. Advisory feasibility never forces success."""
+    if snapshot.worker_id != adapter.worker_id:
+        raise ValueError("snapshot worker does not match the target adapter")
     return adapter.attempt_admission(request, expected_epoch=snapshot.epoch)

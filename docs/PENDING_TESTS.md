@@ -8,13 +8,13 @@ From a fresh checkout, install the CPU development toolchain as in README. On th
 
 ```bash
 .venv/bin/python scripts/audit_environment.py > artifacts/validation/gpu_host_audit.json
-.venv/bin/python scripts/probe_physical_capabilities.py
+.venv/bin/python scripts/probe_physical_capabilities.py --gpu-uuid "$PIGOUJ_GPU_UUID"
 .venv/bin/python scripts/inspect_vllm_source.py \
   --version 0.33.0 \
   --expected-commit 4ba787ec9959e566d3b587a796dff07673324da5
 ```
 
-The physical probe launches no model and performs no CUDA workload. If NVML exists it attempts device identity and two cumulative millijoule counter reads, 50 ms apart. It preserves NVML return codes (including NOT_SUPPORTED) and never substitutes zero for errors. A non-incrementing counter over this short interval is inconclusive. **Exit 2 is always PENDING**, even if counters increment: availability is not calibration or engine integration. This host's captured result is `artifacts/validation/physical_pending.log`: no NVML library and no installed vLLM.
+The physical probe launches no model and performs no CUDA workload. Set PIGOUJ_GPU_UUID to the actual allocation UUID first. If NVML exists and an allocation UUID is provided, the probe attempts matching device identity and three cumulative millijoule counter reads, 50 ms apart. Without an allocation UUID, real device sampling is refused. It preserves NVML return codes (including NOT_SUPPORTED) and never substitutes zero for errors. A non-incrementing counter over this short interval is inconclusive. **Exit 2 is always PENDING**, even if counters increment: availability is not calibration or engine integration. This host's captured result is `artifacts/validation/physical_pending.log`: no NVML library and no installed vLLM.
 
 The GPU/NVML branch of that probe cannot be exercised on this host. No portable CPU mock test can establish physical NVML support. The source inspection is rerunnable without a GPU; it verifies downloaded source identity and signatures only.
 
@@ -44,3 +44,8 @@ After explicit authorization for substantial GPU use, execute and retain:
 | Physical omit/admit replay | Randomize registered arm order, preserve seed/repeat/model/engine/boundary metadata, freeze future arrivals, drain both arms under common H, retain rejects/censoring and raw readings. No physical label for an infeasible admission. |
 
 No integration test above has been executed, no physical dataset exists, and no predictor training or energy-gain analysis is authorized by this task. Gate B, Phase 3 and training remain NO-GO until the required preceding evidence exists.
+
+The final CPU audit and detailed university installation/native event mapping are
+in `GATE_A_FINAL_AUDIT.md`, `GPU_ACCESS_REQUIREMENTS.md` and
+`PHASE2_EXECUTION_PLAN.md`. Current probes preserve time brackets, raw units,
+return codes and UUID selection; the earlier raw logs remain historical evidence.

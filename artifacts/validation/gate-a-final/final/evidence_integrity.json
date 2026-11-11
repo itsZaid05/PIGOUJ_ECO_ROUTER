@@ -1,0 +1,9 @@
+{
+  "source_hashes_verified": 27,
+  "command_logs_verified": 8,
+  "synthetic_arm_records_verified": 16,
+  "native_source_files_verified": 15,
+  "candidate_gpu_lock_verified": true,
+  "original_research_reference_AGENTS_and_demo_unchanged": true,
+  "physical_measurements": 0
+}

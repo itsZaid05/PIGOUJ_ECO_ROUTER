@@ -1,0 +1,68 @@
+{
+  "resolver": "uv pip compile",
+  "attempts": [
+    {
+      "argv": [
+        "uv",
+        "pip",
+        "compile",
+        "configs/phase2-requirements.in",
+        "--python-version",
+        "3.12",
+        "--python-platform",
+        "x86_64-manylinux_2_28",
+        "--only-binary",
+        ":all:",
+        "--generate-hashes",
+        "--output-file",
+        "work/phase2-requirements.candidate.lock"
+      ],
+      "exit_code": 1,
+      "outcome": "unsatisfiable wheel-only llguidance for platform",
+      "log": "dependency_resolution_manylinux_2_28.log"
+    },
+    {
+      "argv": [
+        "uv",
+        "pip",
+        "compile",
+        "configs/phase2-requirements.in",
+        "--python-version",
+        "3.12",
+        "--python-platform",
+        "x86_64-manylinux_2_39",
+        "--only-binary",
+        ":all:",
+        "--generate-hashes",
+        "--output-file",
+        "work/phase2-requirements.candidate.lock"
+      ],
+      "exit_code": 0,
+      "outcome": "metadata-only resolution succeeded; no packages installed",
+      "log": "dependency_resolution_manylinux_2_39.log"
+    },
+    {
+      "argv": [
+        "uv",
+        "pip",
+        "compile",
+        "configs/phase2-requirements.in",
+        "--python-version",
+        "3.12",
+        "--python-platform",
+        "x86_64-manylinux_2_39",
+        "--only-binary",
+        ":all:",
+        "--generate-hashes",
+        "--output-file",
+        "configs/phase2-linux-py312-cu13.lock"
+      ],
+      "exit_code": 0,
+      "outcome": "metadata-only success with explicit research-package build pins; 200 packages",
+      "log": "dependency_resolution_final.log"
+    }
+  ],
+  "candidate_lock": "configs/phase2-linux-py312-cu13.lock",
+  "candidate_lock_sha256": "7ff04f821304746b853b98045c106721a8d1c00c9a209bbe3601d7c3f4141631",
+  "physical_execution": false
+}

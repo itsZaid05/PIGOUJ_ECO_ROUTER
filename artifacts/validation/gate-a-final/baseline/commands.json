@@ -1,0 +1,123 @@
+[
+  {
+    "name": "reference",
+    "argv": [
+      ".venv/bin/python",
+      "reference/PIGOUJ_math_checks.py",
+      "-v"
+    ],
+    "started_at_utc": "2026-11-11T14:54:24.736543+00:00",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "log": "artifacts/validation/gate-a-final/baseline/reference.log",
+    "log_sha256": "3cd7415782de7032dcaed76e94e981ec2805ea0d788ea8039788d169af865770",
+    "is_physical_pass": false
+  },
+  {
+    "name": "unit_tests",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "--junitxml=artifacts/validation/gate-a-final/baseline/junit.xml"
+    ],
+    "started_at_utc": "2026-11-11T14:54:24.952476+00:00",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "log": "artifacts/validation/gate-a-final/baseline/unit_tests.log",
+    "log_sha256": "c159ac825058fb2a19819edc282328a7cb782213fcd831a567ac66d9248e8391",
+    "is_physical_pass": false
+  },
+  {
+    "name": "lint",
+    "argv": [
+      ".venv/bin/ruff",
+      "check",
+      "src",
+      "tests",
+      "scripts"
+    ],
+    "started_at_utc": "2026-11-11T14:54:26.478083+00:00",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "log": "artifacts/validation/gate-a-final/baseline/lint.log",
+    "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "is_physical_pass": false
+  },
+  {
+    "name": "format",
+    "argv": [
+      ".venv/bin/ruff",
+      "format",
+      "--check",
+      "src",
+      "tests",
+      "scripts"
+    ],
+    "started_at_utc": "2026-11-11T14:54:26.517668+00:00",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "log": "artifacts/validation/gate-a-final/baseline/format.log",
+    "log_sha256": "c4fd3f494556e5e7cf4355131a1080dbdcf0bbf09664638af9984db197ad88c0",
+    "is_physical_pass": false
+  },
+  {
+    "name": "types",
+    "argv": [
+      ".venv/bin/mypy"
+    ],
+    "started_at_utc": "2026-11-11T14:54:26.529227+00:00",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "log": "artifacts/validation/gate-a-final/baseline/types.log",
+    "log_sha256": "fe22d95914d7fdd98483ace256b7f2708db4be1255737e5d7cca4d16703ca242",
+    "is_physical_pass": false
+  },
+  {
+    "name": "dependencies",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "started_at_utc": "2026-11-11T14:54:27.163923+00:00",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "log": "artifacts/validation/gate-a-final/baseline/dependencies.log",
+    "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "is_physical_pass": false
+  },
+  {
+    "name": "synthetic_demo",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pigouj.harness",
+      "--output",
+      "artifacts/validation/gate-a-final/baseline/synthetic_demo",
+      "--repeats",
+      "2"
+    ],
+    "started_at_utc": "2026-11-11T14:54:27.558371+00:00",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "log": "artifacts/validation/gate-a-final/baseline/synthetic_demo.log",
+    "log_sha256": "19fe5a294aef7dfcaee9062effad6bde0851c7a18c67b66ed97952bd4fd88c44",
+    "is_physical_pass": false
+  },
+  {
+    "name": "physical_pending",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/probe_physical_capabilities.py"
+    ],
+    "started_at_utc": "2026-11-11T14:54:27.789446+00:00",
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "log": "artifacts/validation/gate-a-final/baseline/physical_pending.log",
+    "log_sha256": "1811b94b3d0fcdf56e9349cbfc2b992aaa25b87bfbed8e49fd57ff7d99eaf15d",
+    "is_physical_pass": false
+  }
+]

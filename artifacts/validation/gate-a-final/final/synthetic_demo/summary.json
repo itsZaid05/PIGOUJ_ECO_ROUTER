@@ -1,0 +1,12 @@
+{
+  "evidence": "synthetic_demonstration",
+  "physical_measurements": 0,
+  "eligible_for_physical_training": false,
+  "pairs": 8,
+  "statuses": {
+    "valid": 2,
+    "invalid": 0,
+    "infeasible": 4,
+    "censored": 2
+  }
+}

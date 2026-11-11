@@ -43,6 +43,30 @@ def _run_errors(run: RunRecord) -> list[str]:
         errors.append("initial_fingerprint_content_hash")
     if state.captured_at_ns != m.intervention_at_ns:
         errors.append("snapshot_intervention_timestamp")
+    # Exact current-state matching is required for this deterministic mock.
+    # A physical adapter must register its own measured freshness/tolerance policy.
+    for name in (
+        "active",
+        "waiting",
+        "kv_free_blocks",
+        "scheduler_budget",
+        "cache_prefix_hashes",
+        "cache_epoch",
+    ):
+        observation = getattr(state, name)
+        if observation.value is None:
+            errors.append(f"initial_state_missing:{name}")
+        elif observation.observed_at_ns != state.captured_at_ns:
+            errors.append(f"initial_state_stale:{name}")
+    prefix_by_id = {r.request_id: r for r in run.offered_prefix.requests}
+    for progress in state.active.value or ():
+        offered = prefix_by_id.get(progress.request_id)
+        if offered is None:
+            errors.append("initial_state_unoffered_request")
+        elif progress.generated_tokens > offered.max_completion_tokens:
+            errors.append("initial_state_output_exceeds_hard_cap")
+    if any(request_id not in prefix_by_id for request_id in state.waiting.value or ()):
+        errors.append("initial_state_unoffered_request")
     if any(r.arrival_ns >= m.intervention_at_ns for r in run.offered_prefix.requests):
         errors.append("future_arrival_in_prefix")
     if run.candidate.arrival_ns != m.intervention_at_ns:
@@ -89,6 +113,13 @@ def _run_errors(run: RunRecord) -> list[str]:
         if outcome.generated_tokens is not None:
             if outcome.generated_tokens > request.max_completion_tokens:
                 errors.append("completion_exceeds_hard_cap")
+            if outcome.ttft_ns is not None:
+                finish_ns = request.arrival_ns + outcome.ttft_ns
+                if outcome.tpot_ns is not None:
+                    finish_ns += (outcome.generated_tokens - 1) * outcome.tpot_ns
+                end_ns = m.intervention_at_ns + min(run.drain_elapsed_ns, m.horizon_ns)
+                if finish_ns > end_ns:
+                    errors.append("completion_outside_recorded_window")
         if outcome.status == "omitted" and request.request_id != run.candidate.request_id:
             errors.append("prefix_request_omitted")
         if run.drained and outcome.status == "censored":

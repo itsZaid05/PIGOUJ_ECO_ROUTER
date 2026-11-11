@@ -1,0 +1,85 @@
+{
+  "schema_version": "pigouj.stage0.probe.1",
+  "physical_gate": "PENDING",
+  "training_labels_produced": 0,
+  "cuda_workloads_started": 0,
+  "wall_unix_ns": 1794409507085290418,
+  "monotonic_ns": 3917187973148,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "libc": [
+    "glibc",
+    "2.41"
+  ],
+  "allocation": {
+    "SLURM_JOB_ID": null,
+    "CUDA_VISIBLE_DEVICES": null,
+    "NVIDIA_VISIBLE_DEVICES": null
+  },
+  "requested_gpu_uuids": [],
+  "packages": {
+    "vllm": null,
+    "torch": null,
+    "pydantic": "2.13.4"
+  },
+  "commands": [
+    {
+      "argv": [
+        "uname",
+        "-a"
+      ],
+      "exit_code": 0,
+      "stdout": "Linux a08be6fa1b6f 6.18.57 #1 SMP Tue Oct 20 21:56:04 UTC 2026 x86_64 GNU/Linux\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "nvidia-smi",
+        "-L"
+      ],
+      "exit_code": null,
+      "error": "[Errno 2] No such file or directory: 'nvidia-smi'"
+    },
+    {
+      "argv": [
+        "nvidia-smi",
+        "--query-gpu=uuid,name,driver_version,memory.total",
+        "--format=csv"
+      ],
+      "exit_code": null,
+      "error": "[Errno 2] No such file or directory: 'nvidia-smi'"
+    },
+    {
+      "argv": [
+        "nvcc",
+        "--version"
+      ],
+      "exit_code": null,
+      "error": "[Errno 2] No such file or directory: 'nvcc'"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "e7b362c0da44c1b3867f8e46f021994704552e13\n",
+      "stderr": ""
+    }
+  ],
+  "installed_source_check": {
+    "status": "not_installed"
+  },
+  "telemetry": {
+    "status": "allocation_uuid_required_before_sampling",
+    "physical_gate": "PENDING",
+    "eligible_for_physical_training": false
+  },
+  "blocked_on": [
+    "native event adapter and calibrated meter",
+    "model/tokenizer revision",
+    "allocation exclusivity and installation/runtime compatibility",
+    "clock/state reproducibility, A/A and overhead acceptance evidence"
+  ]
+}

@@ -1,0 +1,341 @@
+FFFFFFFFFFFFFFF..........                                                [100%]
+=================================== FAILURES ===================================
+__________ test_wrong_worker_snapshot_cannot_authorize_another_worker __________
+
+    def test_wrong_worker_snapshot_cannot_authorize_another_worker() -> None:
+        target = MockEngineAdapter(worker_id="target")
+        other = MockEngineAdapter(worker_id="other")
+        before = target.observe_state(5)
+>       with pytest.raises(ValueError, match="worker"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/test_gate_a_audit.py:24: Failed
+__________ test_future_request_is_rejected_before_mock_state_mutates ___________
+
+    def test_future_request_is_rejected_before_mock_state_mutates() -> None:
+        engine = MockEngineAdapter()
+        before = engine.observe_state(0)
+>       with pytest.raises(ValueError, match="arrival"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/test_gate_a_audit.py:32: Failed
+________ test_snapshot_queue_or_cache_membership_must_be_unique[active] ________
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+field = 'active'
+
+    @pytest.mark.parametrize("field", ["active", "waiting", "cache_prefix_hashes"])
+    def test_snapshot_queue_or_cache_membership_must_be_unique(
+        pair: tuple[RunRecord, RunRecord], field: str,
+    ) -> None:
+        state = pair[0].initial_state
+        observation = getattr(state, field)
+        if field == "active":
+            values = state.active.value
+            assert values is not None
+            duplicate = (values[0], values[0])
+        else:
+            duplicate = ("a" * 64, "a" * 64)
+>       with pytest.raises(ValidationError, match="duplicate"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/test_gate_a_audit.py:49: Failed
+_______ test_snapshot_queue_or_cache_membership_must_be_unique[waiting] ________
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+field = 'waiting'
+
+    @pytest.mark.parametrize("field", ["active", "waiting", "cache_prefix_hashes"])
+    def test_snapshot_queue_or_cache_membership_must_be_unique(
+        pair: tuple[RunRecord, RunRecord], field: str,
+    ) -> None:
+        state = pair[0].initial_state
+        observation = getattr(state, field)
+        if field == "active":
+            values = state.active.value
+            assert values is not None
+            duplicate = (values[0], values[0])
+        else:
+            duplicate = ("a" * 64, "a" * 64)
+>       with pytest.raises(ValidationError, match="duplicate"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/test_gate_a_audit.py:49: Failed
+_ test_snapshot_queue_or_cache_membership_must_be_unique[cache_prefix_hashes] __
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+field = 'cache_prefix_hashes'
+
+    @pytest.mark.parametrize("field", ["active", "waiting", "cache_prefix_hashes"])
+    def test_snapshot_queue_or_cache_membership_must_be_unique(
+        pair: tuple[RunRecord, RunRecord], field: str,
+    ) -> None:
+        state = pair[0].initial_state
+        observation = getattr(state, field)
+        if field == "active":
+            values = state.active.value
+            assert values is not None
+            duplicate = (values[0], values[0])
+        else:
+            duplicate = ("a" * 64, "a" * 64)
+>       with pytest.raises(ValidationError, match="duplicate"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/test_gate_a_audit.py:49: Failed
+_____________ test_snapshot_running_and_waiting_ids_cannot_overlap _____________
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+
+    def test_snapshot_running_and_waiting_ids_cannot_overlap(pair: tuple[RunRecord, RunRecord]) -> None:
+        state = pair[0].initial_state
+        assert state.active.value is not None
+>       with pytest.raises(ValidationError, match="overlap"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/test_gate_a_audit.py:56: Failed
+_ test_equal_missing_core_state_does_not_prove_matching_initial_state[active] __
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+field = 'active'
+
+    @pytest.mark.parametrize("field", [
+        "active", "waiting", "kv_free_blocks", "scheduler_budget", "cache_prefix_hashes", "cache_epoch",
+    ])
+    def test_equal_missing_core_state_does_not_prove_matching_initial_state(
+        pair: tuple[RunRecord, RunRecord], field: str,
+    ) -> None:
+        changed = []
+        for run in pair:
+            observation = getattr(run.initial_state, field)
+            state = change(run.initial_state, **{
+                field: change(observation, value=None, provenance="missing"),
+            })
+            changed.append(with_state(run, state))
+        verdict = validate_pair(changed[0], changed[1])
+>       assert verdict.status == "invalid" and verdict.delta_j is None
+E       AssertionError: assert ('valid' == 'invalid'
+E         
+E         - invalid
+E         ? --
+E         + valid)
+
+tests/test_gate_a_audit.py:74: AssertionError
+_ test_equal_missing_core_state_does_not_prove_matching_initial_state[waiting] _
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+field = 'waiting'
+
+    @pytest.mark.parametrize("field", [
+        "active", "waiting", "kv_free_blocks", "scheduler_budget", "cache_prefix_hashes", "cache_epoch",
+    ])
+    def test_equal_missing_core_state_does_not_prove_matching_initial_state(
+        pair: tuple[RunRecord, RunRecord], field: str,
+    ) -> None:
+        changed = []
+        for run in pair:
+            observation = getattr(run.initial_state, field)
+            state = change(run.initial_state, **{
+                field: change(observation, value=None, provenance="missing"),
+            })
+            changed.append(with_state(run, state))
+        verdict = validate_pair(changed[0], changed[1])
+>       assert verdict.status == "invalid" and verdict.delta_j is None
+E       AssertionError: assert ('valid' == 'invalid'
+E         
+E         - invalid
+E         ? --
+E         + valid)
+
+tests/test_gate_a_audit.py:74: AssertionError
+_ test_equal_missing_core_state_does_not_prove_matching_initial_state[kv_free_blocks] _
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+field = 'kv_free_blocks'
+
+    @pytest.mark.parametrize("field", [
+        "active", "waiting", "kv_free_blocks", "scheduler_budget", "cache_prefix_hashes", "cache_epoch",
+    ])
+    def test_equal_missing_core_state_does_not_prove_matching_initial_state(
+        pair: tuple[RunRecord, RunRecord], field: str,
+    ) -> None:
+        changed = []
+        for run in pair:
+            observation = getattr(run.initial_state, field)
+            state = change(run.initial_state, **{
+                field: change(observation, value=None, provenance="missing"),
+            })
+            changed.append(with_state(run, state))
+        verdict = validate_pair(changed[0], changed[1])
+>       assert verdict.status == "invalid" and verdict.delta_j is None
+E       AssertionError: assert ('valid' == 'invalid'
+E         
+E         - invalid
+E         ? --
+E         + valid)
+
+tests/test_gate_a_audit.py:74: AssertionError
+_ test_equal_missing_core_state_does_not_prove_matching_initial_state[scheduler_budget] _
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+field = 'scheduler_budget'
+
+    @pytest.mark.parametrize("field", [
+        "active", "waiting", "kv_free_blocks", "scheduler_budget", "cache_prefix_hashes", "cache_epoch",
+    ])
+    def test_equal_missing_core_state_does_not_prove_matching_initial_state(
+        pair: tuple[RunRecord, RunRecord], field: str,
+    ) -> None:
+        changed = []
+        for run in pair:
+            observation = getattr(run.initial_state, field)
+            state = change(run.initial_state, **{
+                field: change(observation, value=None, provenance="missing"),
+            })
+            changed.append(with_state(run, state))
+        verdict = validate_pair(changed[0], changed[1])
+>       assert verdict.status == "invalid" and verdict.delta_j is None
+E       AssertionError: assert ('valid' == 'invalid'
+E         
+E         - invalid
+E         ? --
+E         + valid)
+
+tests/test_gate_a_audit.py:74: AssertionError
+_ test_equal_missing_core_state_does_not_prove_matching_initial_state[cache_prefix_hashes] _
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+field = 'cache_prefix_hashes'
+
+    @pytest.mark.parametrize("field", [
+        "active", "waiting", "kv_free_blocks", "scheduler_budget", "cache_prefix_hashes", "cache_epoch",
+    ])
+    def test_equal_missing_core_state_does_not_prove_matching_initial_state(
+        pair: tuple[RunRecord, RunRecord], field: str,
+    ) -> None:
+        changed = []
+        for run in pair:
+            observation = getattr(run.initial_state, field)
+            state = change(run.initial_state, **{
+                field: change(observation, value=None, provenance="missing"),
+            })
+            changed.append(with_state(run, state))
+        verdict = validate_pair(changed[0], changed[1])
+>       assert verdict.status == "invalid" and verdict.delta_j is None
+E       AssertionError: assert ('valid' == 'invalid'
+E         
+E         - invalid
+E         ? --
+E         + valid)
+
+tests/test_gate_a_audit.py:74: AssertionError
+_ test_equal_missing_core_state_does_not_prove_matching_initial_state[cache_epoch] _
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+field = 'cache_epoch'
+
+    @pytest.mark.parametrize("field", [
+        "active", "waiting", "kv_free_blocks", "scheduler_budget", "cache_prefix_hashes", "cache_epoch",
+    ])
+    def test_equal_missing_core_state_does_not_prove_matching_initial_state(
+        pair: tuple[RunRecord, RunRecord], field: str,
+    ) -> None:
+        changed = []
+        for run in pair:
+            observation = getattr(run.initial_state, field)
+            state = change(run.initial_state, **{
+                field: change(observation, value=None, provenance="missing"),
+            })
+            changed.append(with_state(run, state))
+        verdict = validate_pair(changed[0], changed[1])
+>       assert verdict.status == "invalid" and verdict.delta_j is None
+E       AssertionError: assert ('valid' == 'invalid'
+E         
+E         - invalid
+E         ? --
+E         + valid)
+
+tests/test_gate_a_audit.py:74: AssertionError
+____________ test_equal_old_mock_observations_are_not_current_state ____________
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+
+    def test_equal_old_mock_observations_are_not_current_state(pair: tuple[RunRecord, RunRecord]) -> None:
+        changed = []
+        for run in pair:
+            state = change(run.initial_state, kv_free_blocks=change(
+                run.initial_state.kv_free_blocks, observed_at_ns=0,
+            ))
+            changed.append(with_state(run, state))
+        verdict = validate_pair(changed[0], changed[1])
+>       assert verdict.status == "invalid" and verdict.delta_j is None
+E       AssertionError: assert ('valid' == 'invalid'
+E         
+E         - invalid
+E         ? --
+E         + valid)
+
+tests/test_gate_a_audit.py:86: AssertionError
+__________ test_equal_unknown_active_request_is_not_an_offered_prefix __________
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+
+    def test_equal_unknown_active_request_is_not_an_offered_prefix(
+        pair: tuple[RunRecord, RunRecord],
+    ) -> None:
+        changed = []
+        for run in pair:
+            active = run.initial_state.active
+            assert active.value is not None
+            state = change(run.initial_state, active=change(
+                active, value=(change(active.value[0], request_id="never-offered"),),
+            ))
+            changed.append(with_state(run, state))
+        verdict = validate_pair(changed[0], changed[1])
+>       assert verdict.status == "invalid" and verdict.delta_j is None
+E       AssertionError: assert ('valid' == 'invalid'
+E         
+E         - invalid
+E         ? --
+E         + valid)
+
+tests/test_gate_a_audit.py:102: AssertionError
+___________ test_completed_output_cannot_extend_past_recorded_drain ____________
+
+pair = (RunRecord(manifest=RunManifest(schema_version='pigouj.v7.cpu-contracts.1', run_id='demo-accepted-7-17-0-baseline', pa...ns=0, cumulative_j=100.0), CounterSample(elapsed_ns=100, cumulative_j=106.0)), missing_data=False, uncertainty_j=0.0)))
+
+    def test_completed_output_cannot_extend_past_recorded_drain(pair: tuple[RunRecord, RunRecord]) -> None:
+        baseline, intervention = pair
+        outcomes = tuple(change(o, ttft_ns=10_000) if o.request_id == "candidate" else o
+                         for o in intervention.outcomes)
+        verdict = validate_pair(baseline, change(intervention, outcomes=outcomes))
+>       assert verdict.status == "invalid" and verdict.delta_j is None
+E       AssertionError: assert ('valid' == 'invalid'
+E         
+E         - invalid
+E         ? --
+E         + valid)
+
+tests/test_gate_a_audit.py:111: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_gate_a_audit.py::test_wrong_worker_snapshot_cannot_authorize_another_worker
+FAILED tests/test_gate_a_audit.py::test_future_request_is_rejected_before_mock_state_mutates
+FAILED tests/test_gate_a_audit.py::test_snapshot_queue_or_cache_membership_must_be_unique[active]
+FAILED tests/test_gate_a_audit.py::test_snapshot_queue_or_cache_membership_must_be_unique[waiting]
+FAILED tests/test_gate_a_audit.py::test_snapshot_queue_or_cache_membership_must_be_unique[cache_prefix_hashes]
+FAILED tests/test_gate_a_audit.py::test_snapshot_running_and_waiting_ids_cannot_overlap
+FAILED tests/test_gate_a_audit.py::test_equal_missing_core_state_does_not_prove_matching_initial_state[active]
+FAILED tests/test_gate_a_audit.py::test_equal_missing_core_state_does_not_prove_matching_initial_state[waiting]
+FAILED tests/test_gate_a_audit.py::test_equal_missing_core_state_does_not_prove_matching_initial_state[kv_free_blocks]
+FAILED tests/test_gate_a_audit.py::test_equal_missing_core_state_does_not_prove_matching_initial_state[scheduler_budget]
+FAILED tests/test_gate_a_audit.py::test_equal_missing_core_state_does_not_prove_matching_initial_state[cache_prefix_hashes]
+FAILED tests/test_gate_a_audit.py::test_equal_missing_core_state_does_not_prove_matching_initial_state[cache_epoch]
+FAILED tests/test_gate_a_audit.py::test_equal_old_mock_observations_are_not_current_state
+FAILED tests/test_gate_a_audit.py::test_equal_unknown_active_request_is_not_an_offered_prefix
+FAILED tests/test_gate_a_audit.py::test_completed_output_cannot_extend_past_recorded_drain
+15 failed, 10 passed in 1.09s
