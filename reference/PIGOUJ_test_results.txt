@@ -1,0 +1,13 @@
+test_atomic_reserved_block_invariant (__main__.TestMath.test_atomic_reserved_block_invariant) ... ok
+test_equal_common_horizon_energy_idle_cancels (__main__.TestMath.test_equal_common_horizon_energy_idle_cancels) ... ok
+test_marginal_energy_can_be_negative (__main__.TestMath.test_marginal_energy_can_be_negative) ... ok
+test_shapley_equal_marginal_for_additive_coalition (__main__.TestMath.test_shapley_equal_marginal_for_additive_coalition) ... ok
+test_shapley_wakeup_rank_reversal (__main__.TestMath.test_shapley_wakeup_rank_reversal) ... ok
+test_signed_bilinear_energy_identity (__main__.TestMath.test_signed_bilinear_energy_identity) ... ok
+test_unbiased_bernoulli_audit_exact_enumeration (__main__.TestMath.test_unbiased_bernoulli_audit_exact_enumeration) ... ok
+test_uniform_error_two_epsilon_regret_bound (__main__.TestMath.test_uniform_error_two_epsilon_regret_bound) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.062s
+
+OK
