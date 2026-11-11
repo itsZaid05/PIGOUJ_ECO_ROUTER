@@ -1,0 +1,91 @@
+{
+  "recorded_at_utc": "2026-11-11T14:11:48.619362+00:00",
+  "pypi_version": "0.33.0",
+  "tag": "v0.33.0",
+  "source_commit": "4ba787ec9959e566d3b587a796dff07673324da5",
+  "installed": false,
+  "execution_verified": false,
+  "license_url": "https://raw.githubusercontent.com/vllm-project/vllm/4ba787ec9959e566d3b587a796dff07673324da5/LICENSE",
+  "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+  "files": [
+    {
+      "path": "vllm/v1/core/kv_cache_manager.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/4ba787ec9959e566d3b587a796dff07673324da5/vllm/v1/core/kv_cache_manager.py",
+      "sha256": "39ae1c1564a034fd59736a92d962bfab5a0af03529e01349b765422dbd5a355d",
+      "methods": [
+        {
+          "name": "allocate_slots",
+          "line": 380,
+          "signature": "self, request: Request, num_new_tokens: int, num_new_computed_tokens: int=0, new_computed_blocks: KVCacheBlocks | None=None, num_lookahead_tokens: int=0, num_external_computed_tokens: int=0, delay_cache_blocks: bool=False, num_encoder_tokens: int=0, full_sequence_must_fit: bool=False, reserved_blocks: int=0, has_scheduled_reqs: bool=True, skip_zeroing_group_ids: tuple[int, ...]=()"
+        }
+      ],
+      "try_admit_occurrences": 0,
+      "expected_epoch_occurrences": 0
+    },
+    {
+      "path": "vllm/v1/core/sched/scheduler.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/4ba787ec9959e566d3b587a796dff07673324da5/vllm/v1/core/sched/scheduler.py",
+      "sha256": "d76cc22257550972137df9c893505d0bd0f5d482374691e6eca4372772de501a",
+      "methods": [
+        {
+          "name": "schedule",
+          "line": 699,
+          "signature": "self, throttle_prefills: bool=False"
+        },
+        {
+          "name": "add_request",
+          "line": 2931,
+          "signature": "self, request: Request"
+        }
+      ],
+      "try_admit_occurrences": 0,
+      "expected_epoch_occurrences": 0
+    },
+    {
+      "path": "vllm/v1/engine/core.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/4ba787ec9959e566d3b587a796dff07673324da5/vllm/v1/engine/core.py",
+      "sha256": "d02d32df5d15f0a8b8ffc731ed4bc6f7fcb68b8a9273ec5e4c5d1ab4bd7d7e01",
+      "methods": [
+        {
+          "name": "add_request",
+          "line": 518,
+          "signature": "self, request: Request, request_wave: int=0"
+        },
+        {
+          "name": "add_request",
+          "line": 2372,
+          "signature": "self, request: Request, request_wave: int=0"
+        }
+      ],
+      "try_admit_occurrences": 0,
+      "expected_epoch_occurrences": 0
+    },
+    {
+      "path": "vllm/v1/engine/async_llm.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/4ba787ec9959e566d3b587a796dff07673324da5/vllm/v1/engine/async_llm.py",
+      "sha256": "73ef3bfe5352efa4104fd36a6053e5044f5347b36b197a745361dfe195d5800e",
+      "methods": [
+        {
+          "name": "add_request",
+          "line": 397,
+          "signature": "self, request_id: str, prompt: EngineCoreRequest | PromptType | EngineInput | AsyncGenerator[StreamingInput, None], params: SamplingParams | PoolingParams, arrival_time: float | None=None, lora_request: LoRARequest | None=None, tokenization_kwargs: dict[str, Any] | None=None, trace_headers: Mapping[str, str] | None=None, priority: int=0, data_parallel_rank: int | None=None, session_id: str | None=None, prompt_text: str | None=None, reasoning_ended: bool | None=None, reasoning_parser_kwargs: dict[str, Any] | None=None, kv_hints: KvHintsEnvelope | None=None"
+        },
+        {
+          "name": "generate",
+          "line": 726,
+          "signature": "self, prompt: EngineCoreRequest | PromptType | EngineInput | AsyncGenerator[StreamingInput, None], sampling_params: SamplingParams, request_id: str, *, prompt_text: str | None=None, lora_request: LoRARequest | None=None, tokenization_kwargs: dict[str, Any] | None=None, trace_headers: Mapping[str, str] | None=None, priority: int=0, data_parallel_rank: int | None=None, session_id: str | None=None, kv_hints: KvHintsEnvelope | None=None, reasoning_ended: bool | None=None, reasoning_parser_kwargs: dict[str, Any] | None=None"
+        }
+      ],
+      "try_admit_occurrences": 0,
+      "expected_epoch_occurrences": 0
+    },
+    {
+      "path": "vllm/entrypoints/openai/api_server.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/4ba787ec9959e566d3b587a796dff07673324da5/vllm/entrypoints/openai/api_server.py",
+      "sha256": "470ff555bdc19f8e17edf4ee7b6ec3f49ff5af0f773e2a7f91bab536e2239109",
+      "methods": [],
+      "try_admit_occurrences": 0,
+      "expected_epoch_occurrences": 0
+    }
+  ]
+}

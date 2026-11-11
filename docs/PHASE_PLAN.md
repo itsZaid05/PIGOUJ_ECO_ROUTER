@@ -19,3 +19,17 @@
 **Initial request:** paste `CODEX_FIRST_PROMPT.md` (Phase 0/1 CPU foundation). **Next:** request Phase 2 only after sharing Linux GPU host details and Phase 1 test outputs. **Then:** request Phase 3 pair replay only after state and meter APIs are verified.
 
 **Do not let Codex skip from a passed mock test to claimed physical readiness.** If physical hardware cannot be reached, work ends with tested CPU code and explicit blocked integration tasks.
+
+## Recorded execution status — 2026-11-11
+
+Phase 0 and the CPU-only part of Phase 1 are complete at local Git tag
+`phase0-1-cpu`: measured host audit, pinned CPU toolchain, immutable contracts,
+mock-only admission and synthetic pair harness, 66 implementation tests, 8
+separate reference math checks, Ruff and strict mypy evidence. See
+`docs/CPU_FOUNDATION_REPORT.md` and `artifacts/validation/commands.json`.
+
+Phase 2 physical execution is **NO-GO on this workspace**: no exposed NVIDIA
+device/NVML/PDU, installed vLLM or native event/admission adapter. Source-only
+inspection of vLLM 0.33.0 is not integration evidence. `docs/PENDING_TESTS.md`
+preserves the reproducible preflight and required native/meter tests. No later
+phase was executed.

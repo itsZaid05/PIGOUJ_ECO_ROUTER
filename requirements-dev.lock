@@ -1,0 +1,21 @@
+# CPU toolchain, resolved on Python 3.12.14; no GPU dependencies.
+annotated-types==0.8.0
+hypothesis==6.148.0
+iniconfig==2.3.1
+librt==0.16.0
+mypy==1.19.0
+mypy_extensions==1.2.0
+packaging==26.3
+pathspec==1.1.1
+pip==25.0.1
+pluggy==1.7.0
+pydantic==2.13.4
+pydantic_core==2.46.4
+Pygments==2.21.0
+pytest==9.0.2
+ruff==0.14.4
+setuptools==80.9.0
+sortedcontainers==2.4.0
+typing-inspection==0.4.5
+typing_extensions==4.16.0
+wheel==0.45.1

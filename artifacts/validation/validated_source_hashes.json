@@ -1,0 +1,22 @@
+{
+  "pyproject.toml": "fd0aa8e97ff5d237035248b6338adbe36148eed5f41d52f4ed43df82f4df070d",
+  "requirements-dev.lock": "123aeb5f13aaf5fd6a4f5bc108addcab919c080ec817b512e9e57e56071021ab",
+  "src/pigouj/__init__.py": "d0106e5e7e3a13c2207d5c5383fdfccc9eb1e3bda8af11c7056fb194fd3efc08",
+  "src/pigouj/energy.py": "80a0eada83e199b1f6a247b97615aa5d8f993201567428358bab04a0a78733ba",
+  "src/pigouj/engine_adapter.py": "48c4e81ccf412cc8a25f91b450795e668a650d6175877a2fd192780506a2cb3e",
+  "src/pigouj/harness.py": "73ddd5865a85de55cf6a3ed7e74a2c20d56eb88ba38d02cadc88f3e57ec97d58",
+  "src/pigouj/replay.py": "03d9e96275f8f8bdaee6e0431e280e640cb4b2d1622016c808097ad5918f10a7",
+  "src/pigouj/routing.py": "9c779328fd64a6695ac43565225342f9d0a434406fa2e63507c218041bf5a0a1",
+  "src/pigouj/schemas.py": "1fe14097826f2d4dab1f2f3147df3a7a1650e06dd7a8405dd5166d86a97a694e",
+  "src/pigouj/validation.py": "b95ce5657c52c4c06fc545ba7055e8d2ece6828b928e3677730b523c93df0c91",
+  "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "tests/conftest.py": "202652a6729722629370b74537e0f8f997d9756b512f4511e22957aa3894fd31",
+  "tests/test_energy.py": "fcf5c6233591df546635b55f6cb02074fdcab7477c525c4f9b1976a481c541c0",
+  "tests/test_engine.py": "d6fded97a261ab967c24d23a3570aeaee4924e79daf7498012a2b8ff73daca4a",
+  "tests/test_replay.py": "1acd5a0c857b5ec565a760d558e47cd59d8444d440ad8fbf35738bff7581e358",
+  "tests/test_schemas.py": "10cbaf57bd8c7e1a3533aa9a048c0c1cc38ae441367cce93913105bd4b94d6b1",
+  "scripts/audit_environment.py": "7cb914ace3dd423f8684b439645a4421aec94580fde8712c00a873154e88ee24",
+  "scripts/inspect_vllm_source.py": "bbfaccab18445270466ecee88d83f260f76a89f5c93ca3e48a3984cefdab7aa9",
+  "scripts/probe_physical_capabilities.py": "936d099fd6323c69ef56395f34a49301cd8bf9c8e28812df72ea103bb71d179a",
+  "scripts/validate_cpu.py": "4a3fc5e149ecbcbb15af5b8a6c0b55ad9ca7b8e8304ee239787a48f031d7a674"
+}

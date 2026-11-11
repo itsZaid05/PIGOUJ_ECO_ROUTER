@@ -1,0 +1,158 @@
+{
+  "recorded_at_utc": "2026-11-11T14:01:10.343547+00:00",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "cwd": "/workspace/PIGOUJ_Codex_Handoff_2026-11-11",
+  "commands": [
+    {
+      "argv": [
+        "uname",
+        "-a"
+      ],
+      "exit_code": 0,
+      "stdout": "Linux a08be6fa1b6f 6.18.57 #1 SMP Tue Oct 20 21:56:04 UTC 2026 x86_64 GNU/Linux\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "cat",
+        "/etc/os-release"
+      ],
+      "exit_code": 0,
+      "stdout": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "lscpu"
+      ],
+      "exit_code": 0,
+      "stdout": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           46 bits physical, 57 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  3\nOn-line CPU(s) list:                     0-2\nVendor ID:                               GenuineIntel\nModel name:                              INTEL(R) XEON(R) PLATINUM 8573C\nCPU family:                              6\nModel:                                   207\nThread(s) per core:                      1\nCore(s) per socket:                      3\nSocket(s):                               1\nStepping:                                2\nBogoMIPS:                                4599.99\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 arat avx512vbmi umip waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid cldemote movdiri movdir64b fsrm serialize tsxldtrk avx512_fp16 arch_capabilities\nHypervisor vendor:                       KVM\nVirtualization type:                     full\nL1d cache:                               96 KiB (2 instances)\nL1i cache:                               64 KiB (2 instances)\nL2 cache:                                4 MiB (2 instances)\nL3 cache:                                260 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-2\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Vulnerable\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Vulnerable\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Vulnerable\nVulnerability Spectre v1:                Vulnerable: __user pointer sanitization and usercopy barriers only; no swapgs barriers\nVulnerability Spectre v2:                Vulnerable; STIBP: disabled; PBRSB-eIBRS: Not affected; BHI: Vulnerable\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "Python 3.12.14\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "pip",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "pip 26.2.2 from /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pip (python 3.12)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "codex",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "codex-cli 0.167.0-alpha.4\n",
+      "stderr": "WARNING: proceeding, even though we could not create PATH aliases: Read-only file system (os error 30)\n"
+    },
+    {
+      "argv": [
+        "git",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "git version 2.52.0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "exit_code": 128,
+      "stdout": "",
+      "stderr": "fatal: not a git repository (or any of the parent directories): .git\n"
+    },
+    {
+      "argv": [
+        "nvcc",
+        "--version"
+      ],
+      "exit_code": null,
+      "error": "[Errno 2] No such file or directory: 'nvcc'"
+    },
+    {
+      "argv": [
+        "nvidia-smi",
+        "-L"
+      ],
+      "exit_code": null,
+      "error": "[Errno 2] No such file or directory: 'nvidia-smi'"
+    },
+    {
+      "argv": [
+        "nvidia-smi",
+        "--query-gpu=uuid,name,driver_version,memory.total",
+        "--format=csv"
+      ],
+      "exit_code": null,
+      "error": "[Errno 2] No such file or directory: 'nvidia-smi'"
+    }
+  ],
+  "executables": {
+    "python3": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "codex": "/opt/codex/bin/codex",
+    "git": "/usr/local/bin/git",
+    "uv": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/uv",
+    "nvcc": null,
+    "nvidia-smi": null
+  },
+  "packages": {
+    "vllm": null,
+    "torch": null,
+    "nvidia-ml-py": null,
+    "pydantic": "2.13.4",
+    "pytest": null,
+    "ruff": null,
+    "mypy": null
+  },
+  "nvidia_devices": [],
+  "nvidia_proc": false,
+  "nvml_library": null,
+  "rapl_energy_files": [],
+  "repo_files_before_implementation": [
+    "AGENTS.md",
+    "CODEX_FIRST_PROMPT.md",
+    "CODEX_LATER_PHASE_PROMPTS.md",
+    "README.md",
+    "docs/ARCHITECTURE_CONTRACTS.md",
+    "docs/DECISION_LOG.md",
+    "docs/ENVIRONMENT_SETUP.md",
+    "docs/EXPERIMENT_PROTOCOL.md",
+    "docs/HARDWARE_INPUTS.md",
+    "docs/KNOWN_RISKS.md",
+    "docs/MATERIALS_MANIFEST.md",
+    "docs/PHASE_PLAN.md",
+    "docs/PROJECT_BACKGROUND.md",
+    "docs/REFERENCES.md",
+    "docs/VALIDATION_GATES.md",
+    "reference/PIGOUJ_math_checks.py",
+    "reference/PIGOUJ_test_results.txt",
+    "research/history/01_Energy_Aware_LLM_Serving_Architecture_57p.pdf",
+    "research/history/02_Independent_Research_Validation_Audit_35p.pdf",
+    "research/history/03_Independent_Verification_28p.pdf",
+    "research/history/04_PIGOUJ_Final_Consolidated_v5_30p.pdf",
+    "research/history/05_PIGOUJ_v6_PreExperiment_49p.pdf",
+    "research/history/06_PIGOUJ_v6_CoreCorrection_19p.pdf",
+    "research/v7/PIGOUJ_Final_Research_Architecture_2026.docx",
+    "research/v7/PIGOUJ_Final_Research_Architecture_2026.md",
+    "research/v7/PIGOUJ_Final_Research_Architecture_2026.pdf",
+    "research/v7/pigouj_arch.png",
+    "scripts/audit_environment.py"
+  ]
+}

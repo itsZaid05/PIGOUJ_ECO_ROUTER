@@ -1,0 +1,13 @@
+{
+  "platform": "Linux",
+  "physical_gate": "PENDING",
+  "vllm_version": null,
+  "nvml_library": null,
+  "nvml_probe": "UNAVAILABLE: no NVML library exposed",
+  "pending": [
+    "native allocator/admission events and rejected-allocation behavior",
+    "engine-consistent freshness/epoch semantics; no remote API assumed",
+    "PDU or verified subsystem boundary and calibrated clock alignment",
+    "idle/loaded meter repeatability, A/A replay and instrumentation overhead"
+  ]
+}

@@ -39,3 +39,30 @@ Can a *state-conditioned learned estimate of incremental physical energy from ad
 - `docs/`: architecture contracts, phases, experiment protocol, source links, environment setup, risk register, and validation gates.
 
 No API keys, GPU credentials, raw production trace, verified engine patch, or physical measurements are included.
+
+## Executable Phase 0 / CPU Phase 1 foundation
+
+The repository now contains strict frozen v7 contracts, exact replay fingerprint comparison, a deterministic mock engine, and a two-arm **synthetic demonstration** harness. These counters and virtual completion ticks are arbitrary test fixtures. They are neither physical training labels nor a CPU implementation of vLLM's scheduler. There is no learned predictor, GPU adapter or UI.
+
+Clean CPU setup (Python 3.11+, tested on 3.12.14):
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-dev.lock
+.venv/bin/python -m pip install --no-build-isolation --no-deps -e .
+.venv/bin/python scripts/validate_cpu.py --output work/validation-recheck
+```
+
+The recorded acceptance run retains raw outputs and exit codes under `artifacts/validation/`. The command above reruns the gate into a new `work/validation-recheck` directory; select another output path on subsequent runs. The runner refuses to overwrite an existing demonstration directory. Individual test/lint/type commands in `artifacts/validation/commands.json` can also be rerun independently.
+
+For a new demonstration:
+
+```bash
+.venv/bin/python -m pigouj.harness --output work/demo-new --repeats 2
+```
+
+An output directory must not already exist. Every JSONL record/manifest has an evidence tag; pair records are always `eligible_for_physical_training: false`. The CLI produces accepted, capacity-rejected, stale-epoch and censored cases. Invalid records are tested through deliberate corruptions of real module outputs. Every offered prefix request plus the candidate has a completion/rejection/censoring/omission outcome; counterfactual omission is distinct from deployed rejection. One-token TPOT is undefined, represented by `null`.
+
+Modules are `schemas`, `engine_adapter`, `replay`, `energy`, `routing`, `validation`, and the CLI `harness`. `routing.attempt_once` delegates a single attempt; it is not an online routing policy. JSONL plus exclusive file creation and committed content hashes serve the small immutable CPU evidence set; physical Parquet ingestion is deferred to the physical replay phase.
+
+See `docs/ENVIRONMENT_AUDIT.md`, `docs/CPU_FOUNDATION_REPORT.md` and `docs/PENDING_TESTS.md`. **CPU Gate A can pass while physical Gate B remains blocked.**

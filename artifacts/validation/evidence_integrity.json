@@ -1,0 +1,11 @@
+{
+  "checked_at_utc": "2026-11-11T14:17:28.848083+00:00",
+  "source_files_verified": 20,
+  "command_logs_verified": 8,
+  "upstream_sources_verified": 5,
+  "upstream_license_verified": true,
+  "synthetic_arm_records_verified": 16,
+  "pair_ledger_entries_revalidated": 8,
+  "historical_sources_reference_and_AGENTS_unchanged": true,
+  "physical_measurements": 0
+}

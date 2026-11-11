@@ -18,3 +18,5 @@ artifacts/large_models/
 *.pt
 *.pth
 .DS_Store
+work/
+.hypothesis/

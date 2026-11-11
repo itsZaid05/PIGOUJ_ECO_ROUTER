@@ -1,12 +1,18 @@
 # Validation and acceptance gates
 
 ## Gate A — CPU-only contracts (now)
-- [ ] `pytest` or `unittest` runs actual modules, not independently retyped formulas.
-- [ ] Replay pair rejects different prefix hashes, mismatched timestamps, inconsistent energy boundary, differing model/engine hashes, invalid horizon, and missing counter readings.
-- [ ] Replay labels have canonical sign `E_admit - E_omit`, valid physical units, provenance, repeat ID, and `synthetic|measured` tag.
-- [ ] Mock engine refuses admission on capacity failure and stale epoch; router does not force a worker.
-- [ ] Immutable events include all offered requests, service/rejection outcomes and reasons; absent tokens are not silently treated as zero energy.
-- [ ] Reference 8 toy proofs run and clearly remain separate from implementation tests.
+- [x] `pytest` or `unittest` runs actual modules, not independently retyped formulas.
+- [x] Replay pair rejects different prefix hashes, mismatched timestamps, inconsistent energy boundary, differing model/engine hashes, invalid horizon, and missing counter readings.
+- [x] Replay labels have canonical sign `E_admit - E_omit`, valid physical units, provenance, repeat ID, and `synthetic|measured` tag.
+- [x] Mock engine refuses admission on capacity failure and stale epoch; router does not force a worker.
+- [x] Immutable events include all offered requests, service/rejection outcomes and reasons; absent tokens are not silently treated as zero energy.
+- [x] Reference 8 toy proofs run and clearly remain separate from implementation tests.
+
+Gate A evidence (2026-11-11, CPU mock only): `artifacts/validation/commands.json`,
+`unit_tests.log`, `reference.log`, and `synthetic_demo/`. 66 implementation tests
+and 8 separate reference math checks pass. All generated labels are synthetic
+demonstrations; the verifier refuses physical pairs in Phase 1. Git tag:
+`phase0-1-cpu`. Gate A does not establish physical correctness.
 
 ## Gate B — physical instrumentation
 - [ ] Running on supported NVIDIA Linux testbed; exact GPU UUID, driver/CUDA/vLLM/model revisions recorded.
